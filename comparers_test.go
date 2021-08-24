@@ -5,10 +5,10 @@ import "testing"
 func Test_Comparer_TrueComparedToFalse_ShouldBeFalse(t *testing.T) {
 	// arrange
 	// act
-	var expected = compare(true).to(false)
+	var expected = Compare(true).To(false)
 	// assert
 	if expected == true {
-		t.Log("True should not be equal to false")
+		t.Log("True should not be equal To false")
 		t.Fail()
 	}
 }
@@ -16,10 +16,10 @@ func Test_Comparer_TrueComparedToFalse_ShouldBeFalse(t *testing.T) {
 func Test_Comparer_FalseComparedToTrue_ShouldBeFalse(t *testing.T) {
 	// arrange
 	// act
-	var expected = compare(false).to(true)
+	var expected = Compare(false).To(true)
 	// assert
 	if expected == true {
-		t.Log("False should not be equal to true")
+		t.Log("False should not be equal To true")
 		t.Fail()
 	}
 }
@@ -27,10 +27,10 @@ func Test_Comparer_FalseComparedToTrue_ShouldBeFalse(t *testing.T) {
 func Test_Comparer_TrueComparedToTrue_ShouldBeTrue(t *testing.T) {
 	// arrange
 	// act
-	var expected = compare(true).to(true)
+	var expected = Compare(true).To(true)
 	// assert
 	if expected == false {
-		t.Log("True should be equal to true")
+		t.Log("True should be equal To true")
 		t.Fail()
 	}
 }
@@ -38,10 +38,10 @@ func Test_Comparer_TrueComparedToTrue_ShouldBeTrue(t *testing.T) {
 func Test_Comparer_FalseComparedToFalse_ShouldBeTrue(t *testing.T) {
 	// arrange
 	// act
-	var expected = compare(false).to(false)
+	var expected = Compare(false).To(false)
 	// assert
 	if expected == false {
-		t.Log("False should be equal to false")
+		t.Log("False should be equal To false")
 		t.Fail()
 	}
 }
@@ -49,10 +49,10 @@ func Test_Comparer_FalseComparedToFalse_ShouldBeTrue(t *testing.T) {
 func Test_Comparer_StringComparedToBoolean_ShouldBeFalse(t *testing.T) {
 	// arrange
 	// act
-	var expected = compare("random").to(false)
+	var expected = Compare("random").To(false)
 	// assert
 	if expected == true {
-		t.Log("String should not be equal to boolean")
+		t.Log("String should not be equal To boolean")
 		t.Fail()
 	}
 }
@@ -65,10 +65,10 @@ func Test_Comparer_StructShouldEqualStruct_ShouldBeTrue(t *testing.T) {
 		age: 24,
 	}
 	// act
-	var expected = compare(person).to(person)
+	var expected = Compare(person).To(person)
 	// assert
 	if expected == false {
-		t.Log("A type should be equal to the same type")
+		t.Log("A type should be equal To the same type")
 		t.Fail()
 	}
 }
@@ -87,10 +87,10 @@ func Test_Comparer_StructShouldNotEqualDifferentStruct_ShouldBeFalse(t *testing.
 		age: 24,
 	}
 	// act
-	var expected = compare(bob1).to(bob2)
+	var expected = Compare(bob1).To(bob2)
 	// assert
 	if expected == false {
-		t.Log("A type should be equal to the same type")
+		t.Log("A type should be equal To the same type")
 		t.Fail()
 	}
 }
@@ -108,8 +108,8 @@ func Test_Comparer_StructComparedToDifferentValues_ShouldBeFalse(t *testing.T) {
 	}
 	// act
 	// arrange
-	if compare(person1).to(person2) {
-		t.Log("A struct should not be equal to a different struct with different values")
+	if Compare(person1).To(person2) {
+		t.Log("A struct should not be equal To a different struct with different values")
 		t.Fail()
 	}
 }
@@ -128,12 +128,12 @@ func Test_Comparer_StructEqualStruct_ShouldNotBeEqual(t *testing.T) {
 	}
 	// act
 	// assert
-	if !compare(bob1).to(bob2) {
+	if !Compare(bob1).To(bob2) {
 		t.Log("Compare should match the same structs")
 		t.Fail()
 	}
-	if compareRef(bob1).to(bob2) {
-		t.Log("2 structs should not be equal via compare ref")
+	if CompareRef(bob1).To(bob2) {
+		t.Log("2 structs should not be equal via Compare ref")
 		t.Fail()
 	}
 }

@@ -2,37 +2,37 @@ package testing_kit
 
 type comparator interface {
 	to(to bool) bool
-	equal(compare bool) comparison
+	equal(compare bool) Comparison
 }
 
-type comparison struct {
+type Comparison struct {
 	baseCompare interface{}
 }
 
-type refComparison struct {
+type RefComparison struct {
 	baseCompare interface{}
 }
 
-func compare(arg interface{}) comparison {
-	return comparison{
+func Compare(arg interface{}) Comparison {
+	return Comparison{
 		baseCompare: arg,
 	}
 }
 
-func compareRef(arg interface{}) refComparison {
-	return refComparison{
+func CompareRef(arg interface{}) RefComparison {
+	return RefComparison{
 		baseCompare: arg,
 	}
 }
 
-func (b comparison) to(arg interface{}) bool {
+func (b Comparison) To(arg interface{}) bool {
 	if b.baseCompare == arg {
 		return true
 	}
 	return false
 }
 
-func (b refComparison) to(arg interface{}) bool {
+func (b RefComparison) To(arg interface{}) bool {
 	if &b.baseCompare == &arg {
 		return true
 	}
